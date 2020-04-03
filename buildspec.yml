@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10  
+    commands:
+      - echo Installing serverlessjs...
+      - npm install -g serverless
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install --only=prod
+      # - npm test
+      # No tests to run yet
+  build:
+    commands:
+      # Deploy serverless here        
+      - export SLS_DEBUG=*
+      - serverless deploy --stage $ENVIRONMENT
+  post_build:
+    commands:
+      - echo Build completed on `date`

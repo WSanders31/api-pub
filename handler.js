@@ -1,7 +1,23 @@
-/*
- * API Pub Lambda Entry
- */
+const AWS = require('aws-sdk');
+const dynamoDB = new AWS.DynamoDB.DocumentClient({
+    region: 'us-east-1'
+  });
 
-exports.handleEvent = async (event, context) => {
-    console.log("Handling Event!");
+
+const getRecord = async (request) => {
+    console.log("getRecord", request);
 }
+
+const createRecord = async (request) => {
+    console.log("createRecord", request);
+}
+
+const deleteRecord = async (request) => {
+    console.log("deleteRecord", request);
+}
+
+module.exports = {
+    getRecord: getRecord,
+    createRecord: createRecord,
+    deleteRecord: deleteRecord,
+  }
